@@ -1,0 +1,51 @@
+{
+    "qa": {
+        "common": {
+            "appName" : "mortgageloaneligibility",
+            "stagingBucketName": "mortgageloanapp"
+        },
+        "route53": {
+            "targetDNSName" : "mortgageloaneligibility-qa-east",
+            "targetDomain" : "engineeratlife.com.",
+            "targetHostedZoneId" : "ZVFB1OMT9YY85",
+            "sourceHostedZoneId" : "Z35SXDOTRQ7X7K"
+        },
+        "autoScaling": {
+            "amiId": "ami-b73b63a0",
+            "availabilityZones": [
+                "us-east-1a"
+            ],
+            "instanceType": "t2.micro",
+            "snapshotId": "snap-75a9f393",
+            "maxInstances": "1",
+            "minInstances": "1",
+            "keyName": "myownkey",
+            "appName" : "mortgageloaneligibility",
+            "stagingBucket" : "mortgageloanapp",
+            "iamRole" : "MortgageLoan-ec2-s3-role",
+            "securityGroups": [
+                "sg-dcaa1ca6"
+            ],
+            "subnets": [
+                "subnet-3dd2e917"
+            ],
+            "loadBalancerName" : "mortgageloan-elb",
+            "appAlertTopic" : "arn:aws:sns:us-east-1:011156957090:mortgageloan-alert-qa",
+            "iaasAlertTopic" : "arn:aws:sns:us-east-1:011156957090:mortgageloan-alert-qa"
+        },
+        "loadBalancer":{
+            "loadBalancerName": "mortgageloan-elb",
+            "appName" : "mortgageloaneligibility",
+            "securityGroups": [
+                "sg-dcaa1ca6"
+            ],
+            "subnets": [
+                "subnet-3dd2e917"
+            ],
+            "healthCheckUrl" : "/mortgage-loan/eligibility/health",
+            "iaasAlertTopic" : "arn:aws:sns:us-east-1:011156957090:mortgageloan-alert-qa",
+            "appAlertTopic" : "arn:aws:sns:us-east-1:011156957090:mortgageloan-alert-qa",
+            "healthOkTopic" : "arn:aws:sns:us-east-1:011156957090:mortgageloan-alert-qa"
+        }
+    }
+}
